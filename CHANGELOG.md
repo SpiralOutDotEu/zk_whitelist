@@ -1,3 +1,10 @@
+## [1.0.10](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.0.9...v1.0.10) (2023-10-28)
+
+
+### Bug Fixes
+
+* **ci:** :bug: Add Cargo.lock to auto git files ([9131659](https://github.com/SpiralOutDotEu/zk_whitelist/commit/913165983ec451e80d5e7f1b94e659573f93fbab))
+
 ## [1.0.9](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.0.8...v1.0.9) (2023-10-28)
 
 
