@@ -32,12 +32,16 @@ jobs:
       - name: Build
         run: cargo build --release
 
+      - name: Install GitHub CLI
+        run: |
+            sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0
+            sudo apt-add-repository https://cli.github.com/packages
+            sudo apt update
+            sudo apt install gh
+
       - name: Upload Assets to GitHub Release
-        uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.semantic-release.outputs.upload_url }}
-          asset_path: ./target/release/zk_whitelist
-          asset_name: zk_whitelist
-          asset_content_type: application/octet-stream
+            GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+            VERSION=$(grep '^version =' Cargo.toml | cut -d'"' -f2)
+            gh release upload "v$VERSION" ./target/release/zk_whitelist --clobber
