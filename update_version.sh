@@ -11,3 +11,6 @@ sed -i.bak -e "s/^version = .*/version = \"$NEW_VERSION\"/" $CARGO_TOML
 
 # Remove the backup file created by sed
 rm $CARGO_TOML.bak
+
+# Update Cargo.lock file
+cargo update
