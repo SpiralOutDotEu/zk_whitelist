@@ -1,3 +1,10 @@
+## [1.0.8](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.0.7...v1.0.8) (2023-10-28)
+
+
+### Bug Fixes
+
+* **ci:** :bug: Sync cargo.lock version ([1cd7d32](https://github.com/SpiralOutDotEu/zk_whitelist/commit/1cd7d327c86a644aab2760c1911cf7e8a8b41e27))
+
 ## [1.0.7](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.0.6...v1.0.7) (2023-10-28)
 
 
