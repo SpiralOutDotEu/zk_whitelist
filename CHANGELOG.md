@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.0.4...v1.0.5) (2023-10-28)
+
+
+### Bug Fixes
+
+* **ci:** :bug: manual upload release binary ([84dd40a](https://github.com/SpiralOutDotEu/zk_whitelist/commit/84dd40ad2b2356cfcb45c7872545e09739eff9e1))
+
 ## [1.0.4](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.0.3...v1.0.4) (2023-10-28)
 
 
