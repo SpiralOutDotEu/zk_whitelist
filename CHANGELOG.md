@@ -1,3 +1,10 @@
+## [1.0.6](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.0.5...v1.0.6) (2023-10-28)
+
+
+### Bug Fixes
+
+* **ci:** :bug: merge build and semantic version run commands ([90a90d0](https://github.com/SpiralOutDotEu/zk_whitelist/commit/90a90d07f2855cd7b9806905c376dc283c8d1516))
+
 ## [1.0.5](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.0.4...v1.0.5) (2023-10-28)
 
 
