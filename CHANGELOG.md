@@ -1,3 +1,10 @@
+## [1.0.9](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.0.8...v1.0.9) (2023-10-28)
+
+
+### Bug Fixes
+
+* **ci:** :bug: Update the version in Cargo.lock with update_version script ([db6ee49](https://github.com/SpiralOutDotEu/zk_whitelist/commit/db6ee49c938a516f6a3ba7984dae696d976414e7))
+
 ## [1.0.8](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.0.7...v1.0.8) (2023-10-28)
 
 
