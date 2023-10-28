@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions-rust-lang/setup-rust-toolchain@v1
-          
+      
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
@@ -21,27 +21,10 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm install
+            npm install
 
       - name: Semantic Release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }},
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx semantic-release
-        
-      - name: Build
-        run: cargo build --release
-
-      - name: Install GitHub CLI
-        run: |
-            sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0
-            sudo apt-add-repository https://cli.github.com/packages
-            sudo apt update
-            sudo apt install gh
-
-      - name: Upload Assets to GitHub Release
-        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }},
             GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-            VERSION=$(grep '^version =' Cargo.toml | cut -d'"' -f2)
-            gh release upload "v$VERSION" ./target/release/zk_whitelist --clobber
+        run: cargo build --release && npx semantic-release
