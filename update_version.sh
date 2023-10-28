@@ -14,3 +14,6 @@ rm $CARGO_TOML.bak
 
 # Update Cargo.lock file
 cargo update
+
+# Build the project with the updated version number
+cargo build --release
