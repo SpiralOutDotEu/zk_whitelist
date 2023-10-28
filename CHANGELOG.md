@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.0.3...v1.0.4) (2023-10-28)
+
+
+### Bug Fixes
+
+* **ci:** :bug: change order of release build ([97f9dd2](https://github.com/SpiralOutDotEu/zk_whitelist/commit/97f9dd2295646dae32d2b8d1fbafc11380a97328))
+
 ## [1.0.3](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.0.2...v1.0.3) (2023-10-28)
 
 
