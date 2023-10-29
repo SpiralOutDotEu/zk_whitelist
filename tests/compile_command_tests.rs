@@ -27,10 +27,7 @@ mod tests {
 
     fn execute_compile_command(dir: &Path) {
         let mut cmd = Command::cargo_bin(env!("CARGO_PKG_NAME")).unwrap();
-        cmd.current_dir(dir)
-            .arg("compile")
-            .assert()
-            .success();
+        cmd.current_dir(dir).arg("compile").assert().success();
     }
 
     fn assert_compiled_files_exist(dir: &Path) {

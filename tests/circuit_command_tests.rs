@@ -24,9 +24,7 @@ mod tests {
 
     fn execute_circuit_command() {
         let mut cmd = Command::cargo_bin(env!("CARGO_PKG_NAME")).unwrap();
-        cmd.arg("circuit")
-            .assert()
-            .success();
+        cmd.arg("circuit").assert().success();
     }
 
     fn assert_files_match(expected_content: &[u8], actual_content: &[u8], file_path: &Path) {
