@@ -1,9 +1,9 @@
 use std::env;
 use std::fs::File;
-use std::io::Write;
+use std::io::{self, Write};
 use std::path::Path;
 
-fn main() -> Result<(), Box<dyn std::error::Error>> {
+fn main() -> io::Result<()> {
     let args: Vec<String> = env::args().collect();
     if args.contains(&"--version".to_string()) || args.contains(&"--v".to_string()) {
         println!(
