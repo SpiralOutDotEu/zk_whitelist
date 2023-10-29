@@ -7,4 +7,4 @@ template Whitelist() {
     assert(a==b);
 }
 
-component main {public b} = Whitelist();
+component main {public [b]} = Whitelist();
