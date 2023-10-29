@@ -2,7 +2,8 @@ name: Rust
 
 on:
   push:
-    branches: [ "master" ]
+    branches:
+      - '!master'
   pull_request:
     branches: [ "master" ]
 
@@ -25,7 +26,7 @@ jobs:
         run: |
           git clone https://github.com/iden3/circom.git
           cd circom
-          cargo install --path .
+          cargo install --path circom
 
       - name: Install SnarkJS
         run: |
