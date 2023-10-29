@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.2.1...v1.3.0) (2023-10-29)
+
+
+### Features
+
+* **cli:** :building_construction: Migrate CLI Argument Parsing to Clap ([09d03e0](https://github.com/SpiralOutDotEu/zk_whitelist/commit/09d03e0de6648f463b7006806fd49a09d1b22b2f))
+
 ## [1.2.1](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.2.0...v1.2.1) (2023-10-29)
 
 
