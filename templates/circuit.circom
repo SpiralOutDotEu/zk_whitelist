@@ -1,10 +1,10 @@
 pragma circom 2.1.6;
 
 template Whitelist() {
-    signal input a;
-    signal input b;
+    signal input addressInDecimal;
+    signal input sameAddressButPublic;
     
-    assert(a==b);
+    assert(addressInDecimal==sameAddressButPublic);
 }
 
-component main {public [b]} = Whitelist();
+component main {public [sameAddressButPublic]} = Whitelist();
