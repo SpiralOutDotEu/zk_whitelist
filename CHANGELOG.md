@@ -1,3 +1,12 @@
+## [1.2.1](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.2.0...v1.2.1) (2023-10-29)
+
+
+### Bug Fixes
+
+* **ci:** :bug: Add circom path and run test on push ([9aad534](https://github.com/SpiralOutDotEu/zk_whitelist/commit/9aad534a158d8558d0bbdc889cf4b071b1c9a8bc))
+* **ci:** :bug: Ignore errors on circom build ([4e85c3b](https://github.com/SpiralOutDotEu/zk_whitelist/commit/4e85c3ba7081ccf59b9ca741c0ea83c6558f6144))
+* **ci:** :bug: Update GitHub Actions to install circom and snarkjs ([4b87618](https://github.com/SpiralOutDotEu/zk_whitelist/commit/4b87618d181ce684977e7ac942450b1d315719bf))
+
 # [1.2.0](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.1.0...v1.2.0) (2023-10-29)
 
 
