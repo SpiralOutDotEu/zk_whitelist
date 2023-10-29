@@ -1,3 +1,15 @@
+# [1.2.0](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.1.0...v1.2.0) (2023-10-29)
+
+
+### Bug Fixes
+
+* **cli:** :bug: Make public variable in array ([88b5313](https://github.com/SpiralOutDotEu/zk_whitelist/commit/88b53137dc9f8c60e04b09ac9608ffc0f5add905))
+
+
+### Features
+
+* **cli:** :sparkles: Implement `compile` command to compile the circuit file ([a81d213](https://github.com/SpiralOutDotEu/zk_whitelist/commit/a81d213727d761ca33bd11105ea18a87382f733a))
+
 # [1.1.0](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.0.10...v1.1.0) (2023-10-29)
 
 
