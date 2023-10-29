@@ -1,77 +1,73 @@
+use clap::{Parser, Subcommand};
 use std::env;
 use std::fs::File;
 use std::io::{self, Write};
 use std::path::Path;
 use std::process::Command;
 
-/// Entry point of the application.
-///
-/// This function processes command line arguments to determine which action to perform.
+/// Represents the command line interface for the Zero Knowledge Whitelist Tool.
+/// Deriving `Parser` from clap allows for automatic parsing of command line arguments.
+#[derive(Parser)]
+#[clap(
+    name = "Zero Knowledge Whitelist Tool",
+    version = env!("CARGO_PKG_VERSION"),
+    author = "Nikos Koumbakis <n.koumbakis@gmail.com>",
+    about = "This tool orchestrates the management of an address whitelist using Zero-Knowledge (ZK) proofs.\nSimply input the addresses, and it will generate the corresponding Solidity code.\nIt streamlines the process of maintaining a secure and efficient whitelist for your decentralized application."
+)]
+struct Cli {
+    /// The subcommand to be executed, parsed from the command line arguments.
+    #[clap(subcommand)]
+    subcmd: SubCommand,
+}
+
+/// Enumerates the available subcommands.
+/// Deriving `Subcommand` from clap provides automatic subcommand handling.
+#[derive(Subcommand)]
+enum SubCommand {
+    /// The `circuit` subcommand copies a circuit file template to the current directory.
+    Circuit,
+    /// The `compile` subcommand compiles the circuit file.
+    Compile,
+}
+/// The entry point of the application.
+/// Parses command line arguments and executes the corresponding subcommand.
 fn main() -> io::Result<()> {
-    // Collect command line arguments
-    let args: Vec<String> = env::args().collect();
-    // Check for version flag and display version if present
-    if args.contains(&"--version".to_string()) || args.contains(&"--v".to_string()) {
-        display_version();
-    }
-    // Check for circuit command and copy circuit file if present
-    else if args.contains(&"circuit".to_string()) {
-        copy_circuit_file()?;
-    }
-    // Check for compile command and compile circuit if present
-    else if args.contains(&"compile".to_string()) {
-        compile_circuit()?;
+    let args = Cli::parse();
+
+    match args.subcmd {
+        SubCommand::Circuit => copy_circuit_file()?,
+        SubCommand::Compile => compile_circuit()?,
     }
 
     Ok(())
 }
 
-/// Displays the version of the tool to the console.
-fn display_version() {
-    println!(
-        "Zero Knowledge Whitelist Tool, version {}",
-        env!("CARGO_PKG_VERSION")
-    );
-}
-
-/// Copies the circuit file template to the current directory.
-///
-/// # Errors
-///
-/// Returns an error if there is a problem accessing the current directory or writing the file.
+/// Copies a circuit file template to the current directory.
+/// This function is called when the `circuit` subcommand is used.
 fn copy_circuit_file() -> io::Result<()> {
-    // Getting the current directory
     let current_dir = env::current_dir()?;
-    // Defining the path for the circuit file
     let circuit_path = Path::new(&current_dir).join("circuit.circom");
-    // Creating and writing to the circuit file
     let mut file = File::create(circuit_path)?;
     file.write_all(include_bytes!("../templates/circuit.circom"))?;
     Ok(())
 }
 
 /// Compiles the circuit file using the circom compiler.
-///
-/// # Errors
-///
-/// Returns an error if the compilation fails.
+/// This function is called when the `compile` subcommand is used.
 fn compile_circuit() -> io::Result<()> {
-    // Getting the current directory
     let current_dir = env::current_dir()?;
-    // Executing the circom compiler with required arguments
+    eprintln!("Working directory: {:?}", current_dir);
     let output = Command::new("circom")
         .current_dir(&current_dir)
         .arg("circuit.circom")
         .args(&["--r1cs", "--sym", "--wasm"])
         .output()?;
 
-    // Checking for compilation success
+    eprintln!("circom stdout: {}", String::from_utf8_lossy(&output.stdout));
+    eprintln!("circom stderr: {}", String::from_utf8_lossy(&output.stderr));
+
     if !output.status.success() {
-        let error_message = format!(
-            "Compilation failed with error: {}",
-            String::from_utf8_lossy(&output.stderr)
-        );
-        return Err(io::Error::new(io::ErrorKind::Other, error_message));
+        return Err(io::Error::new(io::ErrorKind::Other, "Compilation failed"));
     }
 
     Ok(())
