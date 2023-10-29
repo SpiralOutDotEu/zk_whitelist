@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions-rust-lang/setup-rust-toolchain@v1
-
+      
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
@@ -26,6 +26,7 @@ jobs:
         run: |
           git clone https://github.com/iden3/circom.git
           cd circom
+          export RUSTFLAGS='-A noop-method-call'
           cargo install --path circom
 
       - name: Install SnarkJS
