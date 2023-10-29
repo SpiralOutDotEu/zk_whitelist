@@ -1,17 +1,14 @@
 #[cfg(test)]
 mod tests {
     use assert_cmd::Command;
-    use std::error::Error;
     use std::fs;
-    use std::path::{Path, PathBuf};
-    use tempfile::tempdir;
+    use std::path::Path;
 
     #[test]
     fn test_compile_command() {
         // Arrange
-        let temp_dir = tempdir().unwrap();
-        let current_dir = temp_dir.path().to_path_buf();
-        create_circuit_file(&current_dir).unwrap();
+        let current_dir = std::env::current_dir().unwrap();
+        create_circuit_file(&current_dir);
 
         // Act
         execute_compile_command(&current_dir);
@@ -19,12 +16,13 @@ mod tests {
         // Assert
         assert_compiled_files_exist(&current_dir);
 
+        // Clean up
+        clean_up_files(&current_dir);
     }
 
-    fn create_circuit_file(dir: &Path) -> Result<PathBuf, Box<dyn Error>> {
+    fn create_circuit_file(dir: &Path) {
         let circuit_path = dir.join("circuit.circom");
-        fs::write(&circuit_path, include_bytes!("../templates/circuit.circom"))?;
-        Ok(circuit_path)
+        fs::write(&circuit_path, include_bytes!("../templates/circuit.circom")).unwrap();
     }
 
     fn execute_compile_command(dir: &Path) {
@@ -42,5 +40,12 @@ mod tests {
         assert!(r1cs_path.exists());
         assert!(sym_path.exists());
         assert!(wasm_dir_path.exists());
+    }
+
+    fn clean_up_files(dir: &Path) {
+        fs::remove_file(dir.join("circuit.circom")).unwrap();
+        fs::remove_file(dir.join("circuit.r1cs")).unwrap();
+        fs::remove_file(dir.join("circuit.sym")).unwrap();
+        fs::remove_dir_all(dir.join("circuit_js")).unwrap();
     }
 }

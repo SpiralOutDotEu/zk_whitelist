@@ -2,7 +2,8 @@ name: Rust
 
 on:
   push:
-    branches: [ "master" ]
+    branches:
+      - '!master'
   pull_request:
     branches: [ "master" ]
 
@@ -10,13 +11,39 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  build:
-
+  test:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v3
-    - name: Build
-      run: cargo build --verbose
-    - name: Run tests
-      run: cargo test --verbose
+      - uses: actions/checkout@v4
+      - uses: actions-rust-lang/setup-rust-toolchain@v1
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 20
+
+      - name: Clone and Install Circom
+        run: |
+          git clone https://github.com/iden3/circom.git
+          cd circom
+          export RUSTFLAGS='-A noop-method-call'
+          cargo install --path circom
+
+      - name: Install SnarkJS
+        run: |
+          npm install -g snarkjs
+
+      - name: Setup Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
+
+      - name: Build Project
+        run: |
+          cargo build
+
+      - name: Run Tests
+        run: |
+          cargo test
