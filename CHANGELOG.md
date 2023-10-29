@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.0.10...v1.1.0) (2023-10-29)
+
+
+### Features
+
+* **cli:** :sparkles: Add `circuit` command to create `circuit.circom` on user's folder ([943931b](https://github.com/SpiralOutDotEu/zk_whitelist/commit/943931b8eaf1e30576a0dfb354524d637ac6aaa1))
+
 ## [1.0.10](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.0.9...v1.0.10) (2023-10-28)
 
 
