@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.3.0...v1.3.1) (2023-10-30)
+
+
+### Bug Fixes
+
+* **cli:** :bug: correct short version option test ([5b88725](https://github.com/SpiralOutDotEu/zk_whitelist/commit/5b88725f0019be1e9774446f41fa21c7028a4d5a))
+
 # [1.3.0](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.2.1...v1.3.0) (2023-10-29)
 
 
