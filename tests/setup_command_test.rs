@@ -83,7 +83,7 @@ mod tests {
             "verification_key.json",
         ];
         for file in output_files {
-            let _ = fs::remove_file(file);  // Ignore any deletion errors
+            let _ = fs::remove_file(file); // Ignore any deletion errors
         }
         // Also clean up any generated directories
         fs::remove_dir_all(dir.join("circuit_js")).unwrap();
