@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.3.1...v1.4.0) (2023-10-30)
+
+
+### Features
+
+* **cli:** :sparkles: Implement `setup` command that runs a ceremony and generates required files ([2dd7951](https://github.com/SpiralOutDotEu/zk_whitelist/commit/2dd79518e847a038c7763b1dbe2ad1a841ad3692))
+
 ## [1.3.1](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.3.0...v1.3.1) (2023-10-30)
 
 
