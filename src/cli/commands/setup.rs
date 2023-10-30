@@ -1,7 +1,7 @@
+use crate::utils::command_runner::{run_snarkjs_command, CommandRunner};
 use fake::faker::lorem::en::Sentence;
 use fake::Fake;
 use std::io;
-use std::process::{Command, ExitStatus};
 
 /// Executes the setup procedure to generate necessary files for ZK proofs.
 ///
@@ -13,18 +13,19 @@ use std::process::{Command, ExitStatus};
 /// # Errors
 ///
 /// Returns an error if any of the external commands fail.
-pub fn execute_setup_command() -> io::Result<()> {
+pub fn execute_setup_command<R: CommandRunner>(runner: R) -> io::Result<()> {
     // Step 1: Start Ceremony
     println!("Starting Ceremony...");
-    let status = Command::new("snarkjs")
-        .args(&["powersoftau", "new", "bn128", "12", "pot12_0000.ptau", "-v"])
-        .status()?;
-    ensure_success(status)?;
+    run_snarkjs_command(
+        &runner,
+        &["powersoftau", "new", "bn128", "12", "pot12_0000.ptau", "-v"],
+    )?;
 
     // Step 2: Contribute to Ceremony
     println!("Contributing to Ceremony...");
-    let status = Command::new("snarkjs")
-        .args(&[
+    run_snarkjs_command(
+        &runner,
+        &[
             "powersoftau",
             "contribute",
             "pot12_0000.ptau",
@@ -32,36 +33,35 @@ pub fn execute_setup_command() -> io::Result<()> {
             "--name=\"First contribution\"",
             "-v",
             "-e=\"some random text\"",
-        ])
-        .status()?;
-    ensure_success(status)?;
+        ],
+    )?;
 
     // Step3: Prepare Phase 2
     println!("Preparing Phase 2...");
-    let status = Command::new("snarkjs")
-        .args(&[
+    run_snarkjs_command(
+        &runner,
+        &[
             "powersoftau",
             "prepare",
             "phase2",
             "pot12_0001.ptau",
             "pot12_final.ptau",
             "-v",
-        ])
-        .status()?;
-    ensure_success(status)?;
+        ],
+    )?;
 
     // Step4: Generate zkey
     println!("Generating zkey...");
-    let status = Command::new("snarkjs")
-        .args(&[
+    run_snarkjs_command(
+        &runner,
+        &[
             "groth16",
             "setup",
             "circuit.r1cs",
             "pot12_final.ptau",
             "circuit_0000.zkey",
-        ])
-        .status()?;
-    ensure_success(status)?;
+        ],
+    )?;
 
     // Step5: Contribute to Phase 2
     println!("Contributing to Phase 2...");
@@ -69,8 +69,9 @@ pub fn execute_setup_command() -> io::Result<()> {
     let random_name: String = Sentence(2..3).fake();
     let random_text: String = Sentence(3..4).fake();
 
-    let status = Command::new("snarkjs")
-        .args(&[
+    run_snarkjs_command(
+        &runner,
+        &[
             "zkey",
             "contribute",
             "circuit_0000.zkey",
@@ -78,49 +79,26 @@ pub fn execute_setup_command() -> io::Result<()> {
             &format!("--name=\"{}\"", random_name),
             "-v",
             &format!("-e=\"{}\"", random_text),
-        ])
-        .status()?;
-    ensure_success(status)?;
+        ],
+    )?;
 
     // Step 6: Export the verification Key
     println!("Exporting the verification key...");
-    let status = Command::new("snarkjs")
-        .args(&[
+    run_snarkjs_command(
+        &runner,
+        &[
             "zkey",
             "export",
             "verificationkey",
             "circuit_0001.zkey",
             "verification_key.json",
-        ])
-        .status()?;
-    ensure_success(status)?;
+        ],
+    )?;
 
-    Ok(())
-}
-
-/// Ensures that a command executed successfully.
-///
-/// Checks the exit status of a command and returns an error if the command
-/// did not execute successfully.
-///
-/// # Parameters
-///
-/// - `status`: The exit status of the command.
-///
-/// # Errors
-///
-/// Returns an error if the command did not execute successfully.
-fn ensure_success(status: ExitStatus) -> io::Result<()> {
-    if !status.success() {
-        return Err(io::Error::new(
-            io::ErrorKind::Other,
-            "Command execution failed",
-        ));
-    }
     Ok(())
 }
 
 /// Handles CLI sub command
-pub fn handle_setup_subcommand() -> io::Result<()> {
-    execute_setup_command()
+pub fn handle_setup_subcommand<R: CommandRunner>(runner: R) -> io::Result<()> {
+    execute_setup_command(runner)
 }

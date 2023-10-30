@@ -1,4 +1,4 @@
-// src/utils/command_runner.rs
+use std::io;
 
 pub trait CommandRunner {
     fn run(&self, command: &str, args: &[&str]) -> Result<(), String>;
@@ -19,6 +19,13 @@ impl CommandRunner for RealCommandRunner {
 
         Ok(())
     }
+}
+
+/// Command runner variant for `snarkjs` commands
+pub fn run_snarkjs_command<R: CommandRunner>(runner: &R, args: &[&str]) -> io::Result<()> {
+    runner
+        .run("snarkjs", args)
+        .map_err(|e| io::Error::new(io::ErrorKind::Other, e))
 }
 
 #[cfg(test)]

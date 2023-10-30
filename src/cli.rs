@@ -36,14 +36,12 @@ pub enum SubCommand {
 /// Parses command line arguments and executes the corresponding subcommand.
 pub fn run_cli() -> std::io::Result<()> {
     let args = Cli::parse();
+    let runner = RealCommandRunner;
 
     match args.subcmd {
         SubCommand::Circuit => circuit::handle_circuit_subcommand()?,
-        SubCommand::Compile => {
-            let runner = RealCommandRunner;
-            compile::handle_compile_subcommand(runner)?
-        }
-        SubCommand::Setup => setup::handle_setup_subcommand()?,
+        SubCommand::Compile => compile::handle_compile_subcommand(runner)?,
+        SubCommand::Setup => setup::handle_setup_subcommand(runner)?,
     };
 
     Ok(())
