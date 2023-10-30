@@ -22,3 +22,8 @@ pub fn compile_circuit() -> io::Result<()> {
 
     Ok(())
 }
+
+/// Handles CLI sub command
+pub fn handle_compile_subcommand() -> io::Result<()> {
+    compile_circuit()
+}

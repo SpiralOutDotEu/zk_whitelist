@@ -1,6 +1,8 @@
 // src/cli/cli.rs
 
 use clap::{Parser, Subcommand};
+mod commands;
+use commands::{circuit, compile, setup};
 
 /// Represents the command line interface for the Zero Knowledge Whitelist Tool.
 /// Deriving `Parser` from clap allows for automatic parsing of command line arguments.
@@ -35,10 +37,10 @@ pub fn run_cli() -> std::io::Result<()> {
     let args = Cli::parse();
 
     match args.subcmd {
-        SubCommand::Circuit => unimplemented!(),
-        SubCommand::Compile => unimplemented!(),
-        SubCommand::Setup => unimplemented!(),
-    }
+        SubCommand::Circuit => circuit::handle_circuit_subcommand(),
+        SubCommand::Compile => compile::handle_compile_subcommand(),
+        SubCommand::Setup => setup::handle_setup_subcommand(),
+    };
 
     Ok(())
 }

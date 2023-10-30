@@ -95,7 +95,7 @@ pub fn execute_setup_command() -> io::Result<()> {
         .status()?;
     ensure_success(status)?;
 
-    Ok(())..
+    Ok(())
 }
 
 /// Ensures that a command executed successfully.
@@ -118,4 +118,9 @@ fn ensure_success(status: ExitStatus) -> io::Result<()> {
         ));
     }
     Ok(())
+}
+
+/// Handles CLI sub command
+pub fn handle_setup_subcommand() -> io::Result<()> {
+    execute_setup_command()
 }
