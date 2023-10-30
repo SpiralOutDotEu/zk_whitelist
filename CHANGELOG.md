@@ -1,3 +1,17 @@
+# [1.5.0](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.4.0...v1.5.0) (2023-10-30)
+
+
+### Features
+
+* **cli:** :sparkles: Add circuit module with copy_circuit_file function ([e010ba0](https://github.com/SpiralOutDotEu/zk_whitelist/commit/e010ba01d7aa7ddc42cd0a12c6c00bfead5f3502))
+* **cli:** :sparkles: Add compile module with compile_circuit function ([d3f0cbf](https://github.com/SpiralOutDotEu/zk_whitelist/commit/d3f0cbfb4b76608aece920dbdb6a7874a2d820f8))
+* **cli:** :sparkles: Add setup module with execute_setup_command and ensure_success functions ([bfa60e9](https://github.com/SpiralOutDotEu/zk_whitelist/commit/bfa60e9ccbf304e497196710b92d6b7f46d48333))
+
+
+### Reverts
+
+* **cli:** :rewind: revert the complext circuit execution ([e8cca4e](https://github.com/SpiralOutDotEu/zk_whitelist/commit/e8cca4ebc826dfa88119ad273f78a2644e75dba8))
+
 # [1.4.0](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.3.1...v1.4.0) (2023-10-30)
 
 
