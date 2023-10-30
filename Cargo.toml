@@ -12,3 +12,7 @@ fake = { version = "2.9", features = ["derive"] }
 [dev-dependencies]
 assert_cmd = "2.0.12"
 predicates = "3.0.4"
+
+[[bin]]
+name = "zk_whitelist"
+path = "src/main.rs"
