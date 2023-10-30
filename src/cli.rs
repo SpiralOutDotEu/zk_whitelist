@@ -1,6 +1,5 @@
-// src/cli/cli.rs
-
 use clap::{Parser, Subcommand};
+use fake::{faker::lorem::en::Sentence, Fake};
 mod commands;
 use crate::utils::command_runner::RealCommandRunner;
 use commands::{circuit, compile, setup, verifier};
@@ -39,12 +38,14 @@ pub enum SubCommand {
 pub fn run_cli() -> std::io::Result<()> {
     let args = Cli::parse();
     let runner = RealCommandRunner;
+    let random_name: String = Sentence(2..3).fake();
+    let random_text: String = Sentence(3..4).fake();
 
     match args.subcmd {
         SubCommand::Circuit => circuit::handle_circuit_subcommand()?,
-        SubCommand::Compile => compile::handle_compile_subcommand(runner)?,
-        SubCommand::Setup => setup::handle_setup_subcommand(runner)?,
-        SubCommand::Verifier => verifier::handle_verifier_subcommand(runner)?,
+        SubCommand::Compile => compile::handle_compile_subcommand(&runner)?,
+        SubCommand::Setup => setup::handle_setup_subcommand(&runner, random_name, random_text)?,
+        SubCommand::Verifier => verifier::handle_verifier_subcommand(&runner)?,
     };
 
     Ok(())
