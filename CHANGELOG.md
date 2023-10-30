@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.5.0...v1.6.0) (2023-10-30)
+
+
+### Features
+
+* **cli:** :sparkles: Add verifier command and tests ([16fc8db](https://github.com/SpiralOutDotEu/zk_whitelist/commit/16fc8dba161a6a9ed38200591509d82f25923bd0))
+
 # [1.5.0](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.4.0...v1.5.0) (2023-10-30)
 
 
