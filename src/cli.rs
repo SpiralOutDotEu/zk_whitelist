@@ -3,7 +3,7 @@
 use clap::{Parser, Subcommand};
 mod commands;
 use crate::utils::command_runner::RealCommandRunner;
-use commands::{circuit, compile, setup};
+use commands::{circuit, compile, setup, verifier};
 
 /// Represents the command line interface for the Zero Knowledge Whitelist Tool.
 /// Deriving `Parser` from clap allows for automatic parsing of command line arguments.
@@ -30,6 +30,8 @@ pub enum SubCommand {
     Compile,
     /// Executes the setup ceremony to generate secure setup
     Setup,
+    /// Exports a Solidity verifier
+    Verifier,
 }
 
 /// The entry point of the application.
@@ -42,6 +44,7 @@ pub fn run_cli() -> std::io::Result<()> {
         SubCommand::Circuit => circuit::handle_circuit_subcommand()?,
         SubCommand::Compile => compile::handle_compile_subcommand(runner)?,
         SubCommand::Setup => setup::handle_setup_subcommand(runner)?,
+        SubCommand::Verifier => verifier::handle_verifier_subcommand(runner)?,
     };
 
     Ok(())
