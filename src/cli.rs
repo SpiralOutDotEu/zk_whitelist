@@ -4,8 +4,6 @@ use clap::{Parser, Subcommand};
 mod commands;
 use commands::{circuit, compile, setup};
 
-use self::commands::circuit::RealFileSystem;
-
 /// Represents the command line interface for the Zero Knowledge Whitelist Tool.
 /// Deriving `Parser` from clap allows for automatic parsing of command line arguments.
 #[derive(Parser)]
@@ -37,10 +35,9 @@ pub enum SubCommand {
 /// Parses command line arguments and executes the corresponding subcommand.
 pub fn run_cli() -> std::io::Result<()> {
     let args = Cli::parse();
-    let fs = RealFileSystem;
 
     match args.subcmd {
-        SubCommand::Circuit => circuit::handle_circuit_subcommand(&fs)?,
+        SubCommand::Circuit => circuit::handle_circuit_subcommand()?,
         SubCommand::Compile => compile::handle_compile_subcommand()?,
         SubCommand::Setup => setup::handle_setup_subcommand()?,
     };
