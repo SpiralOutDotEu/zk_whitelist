@@ -2,6 +2,7 @@
 
 use clap::{Parser, Subcommand};
 mod commands;
+use crate::utils::command_runner::RealCommandRunner;
 use commands::{circuit, compile, setup};
 
 /// Represents the command line interface for the Zero Knowledge Whitelist Tool.
@@ -38,7 +39,10 @@ pub fn run_cli() -> std::io::Result<()> {
 
     match args.subcmd {
         SubCommand::Circuit => circuit::handle_circuit_subcommand()?,
-        SubCommand::Compile => compile::handle_compile_subcommand()?,
+        SubCommand::Compile => {
+            let runner = RealCommandRunner;
+            compile::handle_compile_subcommand(runner)?
+        }
         SubCommand::Setup => setup::handle_setup_subcommand()?,
     };
 
