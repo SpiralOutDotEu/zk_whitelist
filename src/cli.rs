@@ -1,8 +1,9 @@
 use clap::{Parser, Subcommand};
 use fake::{faker::lorem::en::Sentence, Fake};
 mod commands;
-use crate::utils::command_runner::RealCommandRunner;
+use crate::utils::{command_runner::RealCommandRunner, filesystem_operations::RealFileSystemOps};
 use commands::{circuit, compile, setup, verifier};
+use self::commands::movejs;
 
 /// Represents the command line interface for the Zero Knowledge Whitelist Tool.
 /// Deriving `Parser` from clap allows for automatic parsing of command line arguments.
@@ -31,6 +32,8 @@ pub enum SubCommand {
     Setup,
     /// Exports a Solidity verifier
     Verifier,
+    /// Moves the contents of `circuit_js` on parent directory
+    Movejs,
 }
 
 /// The entry point of the application.
@@ -38,6 +41,7 @@ pub enum SubCommand {
 pub fn run_cli() -> std::io::Result<()> {
     let args = Cli::parse();
     let runner = RealCommandRunner;
+    let file_system_ops = RealFileSystemOps;
     let random_name: String = Sentence(2..3).fake();
     let random_text: String = Sentence(3..4).fake();
 
@@ -46,6 +50,7 @@ pub fn run_cli() -> std::io::Result<()> {
         SubCommand::Compile => compile::handle_compile_subcommand(&runner)?,
         SubCommand::Setup => setup::handle_setup_subcommand(&runner, random_name, random_text)?,
         SubCommand::Verifier => verifier::handle_verifier_subcommand(&runner)?,
+        SubCommand::Movejs => movejs::handle_movejs_subcommand(&file_system_ops)?,
     };
 
     Ok(())
@@ -71,5 +76,17 @@ mod tests {
     fn test_parse_setup_subcommand() {
         let args = Cli::parse_from(&["zk_whitelist", "setup"]);
         assert_eq!(args.subcmd, SubCommand::Setup);
+    }
+
+    #[test]
+    fn test_parse_verifier_subcommand() {
+        let args = Cli::parse_from(&["zk_whitelist", "verifier"]);
+        assert_eq!(args.subcmd, SubCommand::Verifier);
+    }
+
+    #[test]
+    fn test_movejs_subcommand() {
+        let args = Cli::parse_from(&["zk_whitelist", "movejs"]);
+        assert_eq!(args.subcmd, SubCommand::Movejs);
     }
 }
