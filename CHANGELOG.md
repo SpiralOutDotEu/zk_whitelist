@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.6.0...v1.7.0) (2023-10-31)
+
+
+### Features
+
+* **cli:** :sparkles: Add `movejs` command and assistant file operations ([64af834](https://github.com/SpiralOutDotEu/zk_whitelist/commit/64af8349c08ff91989065c0f3b862f3e284f01e2))
+
 # [1.6.0](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.5.0...v1.6.0) (2023-10-30)
 
 
