@@ -1,3 +1,17 @@
+# [1.8.0](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.7.0...v1.8.0) (2023-11-01)
+
+
+### Bug Fixes
+
+* **cli:** :bug: use `IsEqual` template to correctly compare the addresses ([94f382a](https://github.com/SpiralOutDotEu/zk_whitelist/commit/94f382a9153b5058331aec05b600b056f6537d3c))
+
+
+### Features
+
+* **cli:** :sparkles: Add operations for read lines and write file ([6b068a7](https://github.com/SpiralOutDotEu/zk_whitelist/commit/6b068a7f88129dabf1494af1478dc987cfe154c8))
+* **cli:** :sparkles: Implement procedure for creating proofs ([8651b81](https://github.com/SpiralOutDotEu/zk_whitelist/commit/8651b812f86cede11d245cf37aa289350dd4d55e))
+* **cli:** :sparkles: Include `proofs` command ([56c20b5](https://github.com/SpiralOutDotEu/zk_whitelist/commit/56c20b56074516f24edf9c2b1daec2544c3fd7c8))
+
 # [1.7.0](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.6.0...v1.7.0) (2023-10-31)
 
 
