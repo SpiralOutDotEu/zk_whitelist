@@ -1,9 +1,10 @@
 use clap::{Parser, Subcommand};
 use fake::{faker::lorem::en::Sentence, Fake};
+use std::io;
 mod commands;
+use self::commands::{movejs, proofs};
 use crate::utils::{command_runner::RealCommandRunner, filesystem_operations::RealFileSystemOps};
 use commands::{circuit, compile, setup, verifier};
-use self::commands::movejs;
 
 /// Represents the command line interface for the Zero Knowledge Whitelist Tool.
 /// Deriving `Parser` from clap allows for automatic parsing of command line arguments.
@@ -34,6 +35,14 @@ pub enum SubCommand {
     Verifier,
     /// Moves the contents of `circuit_js` on parent directory
     Movejs,
+    /// Generates proofs using an input file, with a default value of "addresses.txt".
+    Proofs(ProofsCommand),
+}
+
+#[derive(Parser, PartialEq, Debug)]
+pub struct ProofsCommand {
+    #[clap(long, default_value = "addresses.txt")]
+    pub input_file: String,
 }
 
 /// The entry point of the application.
@@ -51,6 +60,10 @@ pub fn run_cli() -> std::io::Result<()> {
         SubCommand::Setup => setup::handle_setup_subcommand(&runner, random_name, random_text)?,
         SubCommand::Verifier => verifier::handle_verifier_subcommand(&runner)?,
         SubCommand::Movejs => movejs::handle_movejs_subcommand(&file_system_ops)?,
+        SubCommand::Proofs(proofs_command) => {
+            proofs::handle_proofs_subcommand(&runner, &proofs_command.input_file, &file_system_ops)
+                .map_err(|e| io::Error::new(io::ErrorKind::Other, e))?
+        }
     };
 
     Ok(())
@@ -88,5 +101,27 @@ mod tests {
     fn test_movejs_subcommand() {
         let args = Cli::parse_from(&["zk_whitelist", "movejs"]);
         assert_eq!(args.subcmd, SubCommand::Movejs);
+    }
+
+    #[test]
+    fn test_parse_proofs_subcommand_with_default_value() {
+        let args = Cli::parse_from(&["zk_whitelist", "proofs"]);
+        assert_eq!(
+            args.subcmd,
+            SubCommand::Proofs(ProofsCommand {
+                input_file: "addresses.txt".to_string()
+            })
+        );
+    }
+
+    #[test]
+    fn test_parse_proofs_subcommand_with_custom_value() {
+        let args = Cli::parse_from(&["zk_whitelist", "proofs", "--input-file", "custom.txt"]);
+        assert_eq!(
+            args.subcmd,
+            SubCommand::Proofs(ProofsCommand {
+                input_file: "custom.txt".to_string()
+            })
+        );
     }
 }
