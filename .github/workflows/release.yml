@@ -7,22 +7,34 @@ on:
 jobs:
   release:
     name: Release
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
     permissions:
-        contents: write
+      contents: write
     steps:
       - uses: actions/checkout@v4
-      - uses: actions-rust-lang/setup-rust-toolchain@v1
-      
+      - name: Setup Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
+      - name: Build and test
+        run: |
+          cargo build --release --target ${{ matrix.target }}
+          if [[ "${{ matrix.os }}" == "ubuntu-latest" ]]; then
+            cargo test --target ${{ matrix.target }}
+          fi
+        env:
+          CARGO_TARGET_DIR: ${{ runner.temp }}/target
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
           node-version: 20
-
       - name: Install dependencies
-        run: |
-            npm install
-
+        run: npm install
       - name: Semantic Release
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }},
