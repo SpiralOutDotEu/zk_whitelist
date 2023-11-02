@@ -2,9 +2,8 @@ use clap::{Parser, Subcommand};
 use fake::{faker::lorem::en::Sentence, Fake};
 use std::io;
 mod commands;
-use self::commands::{movejs, proofs};
 use crate::utils::{command_runner::RealCommandRunner, filesystem_operations::RealFileSystemOps};
-use commands::{circuit, compile, setup, verifier};
+use commands::{all, circuit, compile, movejs, proofs, setup, verifier};
 
 /// Represents the command line interface for the Zero Knowledge Whitelist Tool.
 /// Deriving `Parser` from clap allows for automatic parsing of command line arguments.
@@ -37,10 +36,18 @@ pub enum SubCommand {
     Movejs,
     /// Generates proofs using an input file, with a default value of "addresses.txt".
     Proofs(ProofsCommand),
+    /// Run all the commands one after the other, {circuit, compile, setup, verifier, movejs, proofs} using an input file, with a default value of "addresses.txt"
+    All(AllCommand),
 }
 
 #[derive(Parser, PartialEq, Debug)]
 pub struct ProofsCommand {
+    #[clap(long, default_value = "addresses.txt")]
+    pub input_file: String,
+}
+
+#[derive(Parser, PartialEq, Debug)]
+pub struct AllCommand {
     #[clap(long, default_value = "addresses.txt")]
     pub input_file: String,
 }
@@ -63,6 +70,15 @@ pub fn run_cli() -> std::io::Result<()> {
         SubCommand::Proofs(proofs_command) => {
             proofs::handle_proofs_subcommand(&runner, &proofs_command.input_file, &file_system_ops)
                 .map_err(|e| io::Error::new(io::ErrorKind::Other, e))?
+        }
+        SubCommand::All(all_command) => {
+            all::handle_all_command(
+                runner,
+                random_name,
+                random_text,
+                file_system_ops,
+                all_command,
+            )?;
         }
     };
 
@@ -120,6 +136,28 @@ mod tests {
         assert_eq!(
             args.subcmd,
             SubCommand::Proofs(ProofsCommand {
+                input_file: "custom.txt".to_string()
+            })
+        );
+    }
+
+    #[test]
+    fn test_parse_all_subcommand_with_default_value() {
+        let args = Cli::parse_from(&["zk_whitelist", "all"]);
+        assert_eq!(
+            args.subcmd,
+            SubCommand::All(AllCommand {
+                input_file: "addresses.txt".to_string()
+            })
+        );
+    }
+
+    #[test]
+    fn test_parse_all_subcommand_with_custom_value() {
+        let args = Cli::parse_from(&["zk_whitelist", "all", "--input-file", "custom.txt"]);
+        assert_eq!(
+            args.subcmd,
+            SubCommand::All(AllCommand {
                 input_file: "custom.txt".to_string()
             })
         );
