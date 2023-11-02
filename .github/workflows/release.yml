@@ -21,7 +21,13 @@ jobs:
         uses: actions-rust-lang/setup-rust-toolchain@v1
       - name: Build
         run: |
-          cargo build --release
+          rustup target add x86_64-unknown-linux-gnu
+          rustup target add x86_64-apple-darwin
+          rustup target add x86_64-pc-windows-gnu
+          cargo install cross
+          cross build --target x86_64-unknown-linux-gnu --release
+          cross build --target x86_64-apple-darwin --release
+          cross build --target x86_64-pc-windows-gnu --release
 
         env:
           CARGO_TARGET_DIR: ${{ runner.temp }}/target
