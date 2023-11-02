@@ -1,0 +1,224 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in library 'zk_whitelist'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--lib",
+                    "--package=zk_whitelist"
+                ],
+                "filter": {
+                    "name": "zk_whitelist",
+                    "kind": "lib"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'zk_whitelist'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=zk_whitelist",
+                    "--package=zk_whitelist"
+                ],
+                "filter": {
+                    "name": "zk_whitelist",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'zk_whitelist' proofs",
+            "program": "${workspaceFolder}/target/debug/zk_whitelist",
+            "args": [ "proofs" ],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'zk_whitelist'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=zk_whitelist",
+                    "--package=zk_whitelist"
+                ],
+                "filter": {
+                    "name": "zk_whitelist",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug integration test 'circuit_command_tests'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=circuit_command_tests",
+                    "--package=zk_whitelist"
+                ],
+                "filter": {
+                    "name": "circuit_command_tests",
+                    "kind": "test"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug integration test 'setup_command_test'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=setup_command_test",
+                    "--package=zk_whitelist"
+                ],
+                "filter": {
+                    "name": "setup_command_test",
+                    "kind": "test"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug integration test 'verifier_command_test'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=verifier_command_test",
+                    "--package=zk_whitelist"
+                ],
+                "filter": {
+                    "name": "verifier_command_test",
+                    "kind": "test"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug integration test 'compile_command_tests'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=compile_command_tests",
+                    "--package=zk_whitelist"
+                ],
+                "filter": {
+                    "name": "compile_command_tests",
+                    "kind": "test"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug integration test 'version_command_tests'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=version_command_tests",
+                    "--package=zk_whitelist"
+                ],
+                "filter": {
+                    "name": "version_command_tests",
+                    "kind": "test"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug integration test 'clap_general_commands_test'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=clap_general_commands_test",
+                    "--package=zk_whitelist"
+                ],
+                "filter": {
+                    "name": "clap_general_commands_test",
+                    "kind": "test"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug integration test 'movejs_command_test'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=movejs_command_test",
+                    "--package=zk_whitelist"
+                ],
+                "filter": {
+                    "name": "movejs_command_test",
+                    "kind": "test"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug integration test 'proofs_command_tests'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=proofs_command_tests",
+                    "--package=zk_whitelist"
+                ],
+                "filter": {
+                    "name": "proofs_command_tests",
+                    "kind": "test"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
