@@ -1,3 +1,10 @@
+## [1.9.4](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.9.3...v1.9.4) (2023-11-02)
+
+
+### Bug Fixes
+
+* **ci:** :rewind: Revert to linux only build ([4d58bb6](https://github.com/SpiralOutDotEu/zk_whitelist/commit/4d58bb6fb534033c4d4c8c27f0338a7eb70e0191))
+
 ## [1.9.3](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.9.2...v1.9.3) (2023-11-02)
 
 
