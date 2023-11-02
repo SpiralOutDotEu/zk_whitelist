@@ -1,3 +1,14 @@
+## [1.9.1](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.9.0...v1.9.1) (2023-11-02)
+
+
+### Bug Fixes
+
+* **ci:** :bug: Do not run tests in this action. Tests have dedicated action ([9450692](https://github.com/SpiralOutDotEu/zk_whitelist/commit/9450692506a9dc759d05bb1d9c0304d86c8e7b6d))
+* **ci:** :bug: Remove the `--target` from `cargo build` and `cargo test` ([2c13892](https://github.com/SpiralOutDotEu/zk_whitelist/commit/2c138921523e66e563e0e40a9846b97a0907a530))
+* **ci:** :bug: Run tests only on Ubuntu ([81f0e16](https://github.com/SpiralOutDotEu/zk_whitelist/commit/81f0e161b233cdd2c01c415e3a49c09475fb5d5f))
+* **ci:** :bug: Set `bash` as shell execution ([35ecb74](https://github.com/SpiralOutDotEu/zk_whitelist/commit/35ecb74b5a95ec27538c2c3264bfc4898d6d8e38))
+* **ci:** :bug: Use actions-rust-lang/setup-rust-toolchain@v1 ([9649c1b](https://github.com/SpiralOutDotEu/zk_whitelist/commit/9649c1b85baff251cad9df94bb6e04f8a7f3293a))
+
 # [1.9.0](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.8.0...v1.9.0) (2023-11-02)
 
 
