@@ -1,3 +1,12 @@
+# [1.9.0](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.8.0...v1.9.0) (2023-11-02)
+
+
+### Features
+
+* **cli:** :sparkles: Add `token` command to generate a sample token contract ([59124e5](https://github.com/SpiralOutDotEu/zk_whitelist/commit/59124e585d476e4d9934fb887c3c7948237375de))
+* **cli:** :sparkles: Add command `all` to run all the other commands end-2-end ([25c0886](https://github.com/SpiralOutDotEu/zk_whitelist/commit/25c08866e71a36697612a3db51a5fc69676bec1c))
+* **cli:** :sparkles: Include `token` command on `all` command ([9501075](https://github.com/SpiralOutDotEu/zk_whitelist/commit/9501075b55dfb5a401e43764d1f217c33faff741))
+
 # [1.8.0](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.7.0...v1.8.0) (2023-11-01)
 
 
