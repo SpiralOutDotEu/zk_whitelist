@@ -1,3 +1,12 @@
+## [1.9.3](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.9.2...v1.9.3) (2023-11-02)
+
+
+### Bug Fixes
+
+* **ci:** :bug: Do not build macos to avoid licencing issue ([fbbbc88](https://github.com/SpiralOutDotEu/zk_whitelist/commit/fbbbc88638d3e40b02ae53e8e6a7269610926440))
+* **ci:** :bug: Run-on macos-latest ([1418cdd](https://github.com/SpiralOutDotEu/zk_whitelist/commit/1418cdd850fb03c76f9b283a559769fda867dcb6))
+* **ci:** :bug: Use cross for multi-os build ([643601f](https://github.com/SpiralOutDotEu/zk_whitelist/commit/643601fd9f82bf652fafb476e0e0a101968c7275))
+
 ## [1.9.2](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.9.1...v1.9.2) (2023-11-02)
 
 
