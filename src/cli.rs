@@ -3,7 +3,7 @@ use fake::{faker::lorem::en::Sentence, Fake};
 use std::io;
 mod commands;
 use crate::utils::{command_runner::RealCommandRunner, filesystem_operations::RealFileSystemOps};
-use commands::{all, circuit, compile, movejs, proofs, setup, verifier};
+use commands::{all, circuit, compile, movejs, proofs, setup, token, verifier};
 
 /// Represents the command line interface for the Zero Knowledge Whitelist Tool.
 /// Deriving `Parser` from clap allows for automatic parsing of command line arguments.
@@ -34,6 +34,8 @@ pub enum SubCommand {
     Verifier,
     /// Moves the contents of `circuit_js` on parent directory
     Movejs,
+    /// Generates a sample token solidity contract, to be used together with verifier.
+    Token,
     /// Generates proofs using an input file, with a default value of "addresses.txt".
     Proofs(ProofsCommand),
     /// Run all the commands one after the other, {circuit, compile, setup, verifier, movejs, proofs} using an input file, with a default value of "addresses.txt"
@@ -71,6 +73,7 @@ pub fn run_cli() -> std::io::Result<()> {
             proofs::handle_proofs_subcommand(&runner, &proofs_command.input_file, &file_system_ops)
                 .map_err(|e| io::Error::new(io::ErrorKind::Other, e))?
         }
+        SubCommand::Token => token::handle_token_subcommand()?,
         SubCommand::All(all_command) => {
             all::handle_all_command(
                 runner,
