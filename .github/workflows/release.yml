@@ -23,9 +23,9 @@ jobs:
           override: true
       - name: Build and test
         run: |
-          cargo build --release --target ${{ matrix.target }}
+          cargo build --release
           if [[ "${{ matrix.os }}" == "ubuntu-latest" ]]; then
-            cargo test --target ${{ matrix.target }}
+            cargo test
           fi
         env:
           CARGO_TARGET_DIR: ${{ runner.temp }}/target
