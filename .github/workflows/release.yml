@@ -16,11 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Setup Rust
-        uses: actions-rs/toolchain@v1
-        with:
-          profile: minimal
-          toolchain: stable
-          override: true
+        uses: actions-rust-lang/setup-rust-toolchain@v1
       - name: Test
         if: matrix.os == 'ubuntu-latest'
         run: |
