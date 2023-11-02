@@ -1,6 +1,7 @@
 {
     "conventionalCommits.scopes": [
         "ci",
-        "cli"
+        "cli",
+        "docs"
     ]
 }
