@@ -10,11 +10,7 @@ module.exports = {
       "changelogFile": "CHANGELOG.md",
     }],
     ["@semantic-release/github", {
-      "assets": [
-        {"path": "target/release/zk_whitelist", "label": "Linux binary"},
-        {"path": "target/release/zk_whitelist.exe", "label": "Windows binary"},
-        {"path": "target/release/zk_whitelist.dmg", "label": "macOS binary"}
-      ]
+      "assets": "target/release/zk_whitelist"
     }],
     ["@semantic-release/git", {
       "assets": ["CHANGELOG.md", "Cargo.toml", "Cargo.lock"],
