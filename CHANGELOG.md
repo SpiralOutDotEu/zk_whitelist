@@ -1,3 +1,10 @@
+## [1.9.2](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.9.1...v1.9.2) (2023-11-02)
+
+
+### Bug Fixes
+
+* **ci:** :bug: run-on ubuntu only and fetch depth 0 ([f803252](https://github.com/SpiralOutDotEu/zk_whitelist/commit/f8032520b3abff17dd5ca777274c0d255d35ab51))
+
 ## [1.9.1](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.9.0...v1.9.1) (2023-11-02)
 
 
