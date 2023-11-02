@@ -10,7 +10,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
@@ -22,11 +22,9 @@ jobs:
       - name: Build
         run: |
           rustup target add x86_64-unknown-linux-gnu
-          rustup target add x86_64-apple-darwin
           rustup target add x86_64-pc-windows-gnu
           cargo install cross
           cross build --target x86_64-unknown-linux-gnu --release
-          cross build --target x86_64-apple-darwin --release
           cross build --target x86_64-pc-windows-gnu --release
 
         env:
