@@ -21,12 +21,14 @@ jobs:
           profile: minimal
           toolchain: stable
           override: true
-      - name: Build and test
+      - name: Test
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          cargo test
+      - name: Build
         run: |
           cargo build --release
-          if [[ "${{ matrix.os }}" == "ubuntu-latest" ]]; then
-            cargo test
-          fi
+
         env:
           CARGO_TARGET_DIR: ${{ runner.temp }}/target
       - name: Setup Node.js
