@@ -17,7 +17,7 @@ rm $CARGO_TOML.bak
 rm $CARGO_LOCK.bak
 
 # Build the project with the updated version number
-cargo build --release
+cargo build --target x86_64-unknown-linux-gnu --release
 
 # Prepare for multi-os build
 sudo apt-get install podman
