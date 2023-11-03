@@ -1,3 +1,10 @@
+## [1.9.6](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.9.5...v1.9.6) (2023-11-03)
+
+
+### Bug Fixes
+
+* **ci:** :adhesive_bandage: Correct target path for win & macos releases ([3f64863](https://github.com/SpiralOutDotEu/zk_whitelist/commit/3f64863ec3e7197443c4daae8444c8fcd67563df))
+
 ## [1.9.5](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.9.4...v1.9.5) (2023-11-03)
 
 
