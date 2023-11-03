@@ -1,3 +1,11 @@
+## [1.9.7](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.9.6...v1.9.7) (2023-11-03)
+
+
+### Bug Fixes
+
+* **ci:** :bug: add windows cross build ([7f99a27](https://github.com/SpiralOutDotEu/zk_whitelist/commit/7f99a27b9d9c9ba0ccb22d09a25390bcd5f07977))
+* **ci:** :bug: correct mac binary name ([2613b39](https://github.com/SpiralOutDotEu/zk_whitelist/commit/2613b3950747c0641d71315e4b425e5e338bac35))
+
 ## [1.9.6](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.9.5...v1.9.6) (2023-11-03)
 
 
