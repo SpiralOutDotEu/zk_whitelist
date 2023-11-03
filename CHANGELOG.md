@@ -1,3 +1,10 @@
+## [1.9.9](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.9.8...v1.9.9) (2023-11-03)
+
+
+### Bug Fixes
+
+* **ci:** :bug: Add different names to binary files to resolve the release conflict ([12d2cf3](https://github.com/SpiralOutDotEu/zk_whitelist/commit/12d2cf34004820d089994a26f7aa23b2a1f70cb0))
+
 ## [1.9.8](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.9.7...v1.9.8) (2023-11-03)
 
 
