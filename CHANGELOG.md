@@ -1,3 +1,10 @@
+## [1.9.5](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.9.4...v1.9.5) (2023-11-03)
+
+
+### Bug Fixes
+
+* **cli:** :adhesive_bandage: Change proofs output name for cleaner structure ([474e6cf](https://github.com/SpiralOutDotEu/zk_whitelist/commit/474e6cfdfae6a07b974bcbf78665da7c0317983b))
+
 ## [1.9.4](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.9.3...v1.9.4) (2023-11-02)
 
 
