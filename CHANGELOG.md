@@ -1,3 +1,11 @@
+## [1.9.8](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.9.7...v1.9.8) (2023-11-03)
+
+
+### Bug Fixes
+
+* **ci:** :bug: build linux with named target ([360e676](https://github.com/SpiralOutDotEu/zk_whitelist/commit/360e676d5243a26beb9cda76b1cb2375fee8bef3))
+* **ci:** :bug: change linux build path ([ffe4d8f](https://github.com/SpiralOutDotEu/zk_whitelist/commit/ffe4d8fee349155e2959b3219b8e39c59f0f8aaf))
+
 ## [1.9.7](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.9.6...v1.9.7) (2023-11-03)
 
 
