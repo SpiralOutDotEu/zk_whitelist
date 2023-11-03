@@ -109,7 +109,7 @@ where
         );
     }
 
-    let output_file_name = format!("{}{}", file_name, "_proofs.json");
+    let output_file_name = format!("{}{}", file_name, ".proofs.json");
     File::create(&output_file_name).map_err(|e| e.to_string())?;
 
     let output_content = serde_json::to_string(&proofs_map).map_err(|e| e.to_string())?;
