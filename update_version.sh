@@ -25,6 +25,7 @@ cargo install cross
 
 # Build for Windows
 rustup target add x86_64-pc-windows-gnu
+cross build --target x86_64-pc-windows-gnu --release
 
 # build for Mac
 curl -L https://github.com/roblabla/MacOSX-SDKs/releases/download/13.3/MacOSX13.3.sdk.tar.xz | tar xJ
