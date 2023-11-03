@@ -17,15 +17,20 @@ rm $CARGO_TOML.bak
 rm $CARGO_LOCK.bak
 
 # Build the project with the updated version number
-cargo build --target x86_64-unknown-linux-gnu --release
 
 # Prepare for multi-os build
 sudo apt-get install podman
 cargo install cross
 
+# For Linux
+cargo build --target x86_64-unknown-linux-gnu --release
+tar -czvf zk_whitelist_linux.tar.gz -C target/x86_64-unknown-linux-gnu/release/ zk_whitelist
+
 # Build for Windows
 rustup target add x86_64-pc-windows-gnu
 cross build --target x86_64-pc-windows-gnu --release
+zip zk_whitelist_windows.zip -j target/x86_64-pc-windows-gnu/release/zk_whitelist.exe
+
 
 # build for Mac
 curl -L https://github.com/roblabla/MacOSX-SDKs/releases/download/13.3/MacOSX13.3.sdk.tar.xz | tar xJ
@@ -34,4 +39,5 @@ export PATH=$PATH:~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustl
 export CARGO_TARGET_X86_64_APPLE_DARWIN_LINKER=rust-lld
 rustup target add x86_64-apple-darwin
 cargo build --release --target x86_64-apple-darwin
+tar -czvf zk_whitelist_macos.tar.gz -C target/x86_64-apple-darwin/release/ zk_whitelist
 
