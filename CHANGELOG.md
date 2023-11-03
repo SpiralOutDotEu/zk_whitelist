@@ -1,3 +1,11 @@
+## [1.9.10](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.9.9...v1.9.10) (2023-11-03)
+
+
+### Bug Fixes
+
+* **ci:** :bug: Add compressed binaries into release ([be4ce3b](https://github.com/SpiralOutDotEu/zk_whitelist/commit/be4ce3b7916faa8e89fedfdd5fd28e3ef45913fc))
+* **ci:** :bug: Make compressed files with binaries for each os ([b63e253](https://github.com/SpiralOutDotEu/zk_whitelist/commit/b63e253d55b198855f676fba8ce007b5b815a588))
+
 ## [1.9.9](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.9.8...v1.9.9) (2023-11-03)
 
 
