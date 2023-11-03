@@ -11,9 +11,9 @@ module.exports = {
     }],
     ["@semantic-release/github", {
       "assets": [
-        {"path": "target/x86_64-unknown-linux-gnu/release/zk_whitelist", "name": "zk_whitelist", "label": "Linux binary"},
-        {"path": "target/x86_64-pc-windows-gnu/release/zk_whitelist.exe", "name": "zk_whitelist_win", "label": "Windows binary"},
-        {"path": "target/x86_64-apple-darwin/release/zk_whitelist",  "name": "zk_whitelist_mac","label": "macOS binary"}
+        {"path": "zk_whitelist_linux.tar.gz", "label": "Linux binary"},
+        {"path": "zk_whitelist_windows.zip", "label": "Windows binary"},
+        {"path": "zk_whitelist_macos.tar.gz", "label": "macOS binary"}
       ]
     }],
     ["@semantic-release/git", {
