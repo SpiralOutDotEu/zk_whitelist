@@ -38,7 +38,7 @@ pub enum SubCommand {
     Token,
     /// Generates proofs using an input file, with a default value of "addresses.txt".
     Proofs(ProofsCommand),
-    /// Run all the commands one after the other, {circuit, compile, setup, verifier, movejs, proofs} using an input file, with a default value of "addresses.txt"
+    /// Run all the commands one after the other, {circuit, compile, setup, verifier, movejs, token, proofs} using an input file, with a default value of "addresses.txt"
     All(AllCommand),
 }
 
