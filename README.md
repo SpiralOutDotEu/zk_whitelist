@@ -19,6 +19,7 @@ To utilize this tool, ensure that the following are installed on your system:
 * [snarkjs](https://github.com/iden3/snarkjs)
 
 ## Recommended Usage
+
 1) Download, extract and set as executable the binary for your OS from release page: 
    
    * https://github.com/SpiralOutDotEu/zk_whitelist/releases
@@ -39,6 +40,9 @@ To utilize this tool, ensure that the following are installed on your system:
 ```
 
 > Note: Besides `verifier.sol`, `zkToken.sol`, and `..proof.json`, all other generated files should be kept private and secure. Failing to secure these files could allow others to generate proofs on their own.
+
+### Demo
+[![Watch the video](https://img.youtube.com/vi/Sje7RINQMxU/hqdefault.jpg)](https://www.youtube.com/embed/Sje7RINQMxU)
 
 ## Alternative: Build from source
 
