@@ -23,12 +23,12 @@ To utilize this tool, ensure that the following are installed on your system:
 0xdeadbeef...
 0xbadcoffee...
 ```
-1) Run the command `zk_whitelist all`. This will generate two Solidity files` verifier.sol` and `zkToken.sol`, alongside a `addresses.txt.proof.json` file.
+3) Run the command `zk_whitelist all`. This will generate two Solidity files` verifier.sol` and `zkToken.sol`, alongside a `addresses.txt.proof.json` file.
 ```sh
 ./zk_whitelist all
 ```
-1) Deploy your contracts and use the proofs file from your frontend to call the contract.
-2) Whenever you need to whitelist additional addresses in the future, simply add them to a new file (e.g., `new_addresses.txt`), and run the command `zk_whitelist proofs --input-file "your_new_addresses_file"`. This will generate the necessary proofs for the new addresses and you can use them without any on-chain changes
+4) Deploy your contracts and use the proofs file from your frontend to call the contract.
+5) Whenever you need to whitelist additional addresses in the future, simply add them to a new file (e.g., `new_addresses.txt`), and run the command `zk_whitelist proofs --input-file "your_new_addresses_file"`. This will generate the necessary proofs for the new addresses and you can use them without any on-chain changes
 ```sh
 ./zk_whitelist proofs --input-file "your_new_addresses_file"
 ```
