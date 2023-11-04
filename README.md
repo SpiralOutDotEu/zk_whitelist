@@ -4,6 +4,11 @@ The Zero Knowledge Whitelist Tool is a powerful utility for managing an address 
 
 > **DISCLAIMER**: This code and presentation is preliminary, **unaudited** and subject to revision. THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND.
 
+## Benefits
+
+* **No On-chain Updates Required**: Whitelisting new addresses does not require any on-chain updates. Just run the proofs command with the new addresses file.
+* **Constant Proof Size**: The proof size remains constant regardless of the number of addresses, ensuring efficiency and scalability.
+  
 ## Requirements
 
 To utilize this tool, ensure that the following are installed on your system:
@@ -57,11 +62,6 @@ cargo run proofs --input-file "your_new_addresses_file"
 ```
 
 > Note: Besides `verifier.sol`, `zkToken.sol`, and `..proof.json`, all other generated files should be kept private and secure. Failing to secure these files could allow others to generate proofs on their own.
-
-## Benefits
-
-* **No On-chain Updates Required**: Whitelisting new addresses does not require any on-chain updates. Just run the proofs command with the new addresses file.
-* **Constant Proof Size**: The proof size remains constant regardless of the number of addresses, ensuring efficiency and scalability.
 
 ## Commands
 Here are the available commands provided by this tool::
