@@ -1,4 +1,7 @@
 # zk_whitelist: A Zero Knowledge Whitelist Tool
+![Test](https://github.com/SpiralOutDotEu/zk_whitelist/actions/workflows/rust_test.yml/badge.svg)
+![GitHub Latest Release)](https://img.shields.io/github/v/release/SpiralOutDotEu/zk_whitelist?logo=github)
+
 
 The Zero Knowledge Whitelist Tool is a powerful utility for managing an address whitelist using Zero-Knowledge (ZK) proofs. With this tool, you can effortlessly generate the necessary Solidity code for maintaining a secure and effective whitelist for your decentralized application.
 
