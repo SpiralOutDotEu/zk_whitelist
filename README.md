@@ -86,6 +86,31 @@ Here are the available commands provided by this tool::
 ## Contributing
 Contributions are welcome! Feel free to submit a Pull Request or open an Issue for any bugs, enhancements, or new features.
 
+### Commit Convention
+This project follows [Conventional Commits](https://www.conventionalcommits.org/) specification for commit messages to automate version updates. Please format your commit messages as follows:
+
+* `fix: description` - for bug fixes (creates a patch release)
+* `feat: description` - for new features (creates a minor release)
+* For breaking changes, add `BREAKING CHANGE:` in the commit body
+
+Examples:
+```
+fix: resolve memory leak in proof generation
+```
+
+```
+feat: add new verification method
+```
+
+```
+feat: update circuit constraints
+
+BREAKING CHANGE: new constraint system is not compatible with previous proofs
+```
+
+> Note: Commits marked as `docs:`, `test:`, `ci:`, etc. won't trigger new releases. Only `fix:`, `feat:`, and breaking changes will create new versions.
+
 
 ---
 *Leverage the power of zero-knowledge proofs to efficiently manage and update your address whitelist while ensuring the scalability and security of your decentralized application.*
+```
