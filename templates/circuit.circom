@@ -34,7 +34,7 @@ template Whitelist () {
     
     ise.in[0] <== addressInDecimal;
     ise.in[1] <== sameAddressButPublic;
-    assert(ise.out==1);
+    ise.out === 1;
     c <== ise.out;
     
 }
