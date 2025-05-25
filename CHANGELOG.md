@@ -1,3 +1,10 @@
+## [1.9.11](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.9.10...v1.9.11) (2025-05-25)
+
+
+### Bug Fixes
+
+* contribution release ([ea2131c](https://github.com/SpiralOutDotEu/zk_whitelist/commit/ea2131cd051cac1fad93bef7ee3dfaaafbe1fbe3))
+
 ## [1.9.10](https://github.com/SpiralOutDotEu/zk_whitelist/compare/v1.9.9...v1.9.10) (2023-11-03)
 
 
