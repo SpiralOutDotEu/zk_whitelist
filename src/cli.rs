@@ -3,7 +3,7 @@ use fake::{faker::lorem::en::Sentence, Fake};
 use std::io;
 mod commands;
 use crate::utils::{command_runner::RealCommandRunner, filesystem_operations::RealFileSystemOps};
-use commands::{all, circuit, compile, movejs, proofs, setup, token, verifier};
+use commands::{all, circuit, compile, movejs, proofs, setup, sui_proofs, token, verifier};
 
 /// Represents the command line interface for the Zero Knowledge Whitelist Tool.
 /// Deriving `Parser` from clap allows for automatic parsing of command line arguments.
@@ -38,12 +38,20 @@ pub enum SubCommand {
     Token,
     /// Generates proofs using an input file, with a default value of "addresses.txt".
     Proofs(ProofsCommand),
+    /// Generates Sui-compatible proofs using arkworks for addresses from the specified file.
+    SuiProofs(SuiProofsCommand),
     /// Run all the commands one after the other, {circuit, compile, setup, verifier, movejs, token, proofs} using an input file, with a default value of "addresses.txt"
     All(AllCommand),
 }
 
 #[derive(Parser, PartialEq, Debug)]
 pub struct ProofsCommand {
+    #[clap(long, default_value = "addresses.txt")]
+    pub input_file: String,
+}
+
+#[derive(Parser, PartialEq, Debug)]
+pub struct SuiProofsCommand {
     #[clap(long, default_value = "addresses.txt")]
     pub input_file: String,
 }
@@ -71,6 +79,10 @@ pub fn run_cli() -> std::io::Result<()> {
         SubCommand::Movejs => movejs::handle_movejs_subcommand(&file_system_ops)?,
         SubCommand::Proofs(proofs_command) => {
             proofs::handle_proofs_subcommand(&runner, &proofs_command.input_file, &file_system_ops)
+                .map_err(|e| io::Error::new(io::ErrorKind::Other, e))?
+        }
+        SubCommand::SuiProofs(sui_proofs_command) => {
+            sui_proofs::handle_sui_proofs_subcommand(&runner, &sui_proofs_command.input_file, &file_system_ops)
                 .map_err(|e| io::Error::new(io::ErrorKind::Other, e))?
         }
         SubCommand::Token => token::handle_token_subcommand()?,
@@ -161,6 +173,28 @@ mod tests {
         assert_eq!(
             args.subcmd,
             SubCommand::All(AllCommand {
+                input_file: "custom.txt".to_string()
+            })
+        );
+    }
+
+    #[test]
+    fn test_parse_sui_proofs_subcommand_with_default_value() {
+        let args = Cli::parse_from(&["zk_whitelist", "sui-proofs"]);
+        assert_eq!(
+            args.subcmd,
+            SubCommand::SuiProofs(SuiProofsCommand {
+                input_file: "addresses.txt".to_string()
+            })
+        );
+    }
+
+    #[test]
+    fn test_parse_sui_proofs_subcommand_with_custom_value() {
+        let args = Cli::parse_from(&["zk_whitelist", "sui-proofs", "--input-file", "custom.txt"]);
+        assert_eq!(
+            args.subcmd,
+            SubCommand::SuiProofs(SuiProofsCommand {
                 input_file: "custom.txt".to_string()
             })
         );
